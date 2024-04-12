@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Megasoft</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+
+        header {
+            background-color: black;
+            color: black;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: black;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+        }
+
+        h2:hover {
+            color: black;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 255, 255);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        section:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: black;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .social {
+            margin-top: 20px;
+            background-color: black;
+        }
+
+        .social a {
+            display: inline-block;
+            margin-right: 10px;
+            transition: color 0.8 ease-in-out;
+        }
+
+        .social a:hover {
+            color: black;
+        }
+       *  {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	box-sizing: border-box;
+}
+button {
+	width: 50px;
+	height: 30px;
+	padding-top: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 10px;
+	border: none;
+	background-color: black;
+	border-radius: 10%;
+	outline: none;
+	cursor: pointer;
+}
+button:active {
+	background-color: rgba(249, 253, 255,0.2);
+}
+li {
+	cursor: pointer;
+	margin-left: none;
+	
+}
+.header {
+	background-color: black;
+}
+li:hover {
+	background-color: rgba(249, 253, 255,0.2);
+}
+hr {
+	margin-bottom: 1px;
+	background-color: black;
+	border: 1.3px solid #fff;
+	border-radius: 0.5px;
+}
+nav {
+	width: 100%;
+	margin-left: 0;
+	background-color:  black;
+}
+.nav-list {
+	list-style: none;
+	margin-left: none;
+	padding: 10px 0;
+	padding-left: 30px;
+}
+a {
+	text-decoration: none;
+	color: red;
+	opacity: 0.7;
+}
+a span {
+	opacity: 0.7;
+	margin-right: 30px;
+}
+.disabled-menu {
+	display: none;
+}
+.enabled-menu {
+	display: block;
+}
+.color {
+	color: red;
+	opacity: 9.0;
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?d9u80u');
+  src:  url('fonts/icomoon.eot?d9u80u#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?d9u80u') format('truetype'),
+    url('fonts/icomoon.woff?d9u80u') format('woff'),
+    url('fonts/icomoon.svg?d9u80u#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-subscriptions:before {
+  content: "\e900";
+}
+.icon-flame:before {
+  content: "\e901";
+}
+.icon-search:before {
+  content: "\e902";
+}
+.icon-play:before {
+  content: "\e912";
+}
+.icon-history:before {
+  content: "\e94d";
+}
+.icon-clock2:before {
+  content: "\e94f";
+}
+.icon-upload3:before {
+  content: "\e9c8";
+}
+.icon-thumbs-up:before {
+  content: "\e905";
+}
+.icon-home:before {
+  content: "\e903";
+}
+.icon-menu:before {
+  content: "\e904";
+}
+.btn-primary {
+  background-color: blue;
+  color: white;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  padding: 0.6px 1px;
+}
+
+.dark-mode {
+    background-color: white;
+    color: gray;
+}
+
+.normal-mode {
+    background-color: gray;
+    color: white;
+}
+.dark-mode-toggle.dark-mode {
+    background-color: gray;
+    color: black
+}
+
+.dark-mode .black {
+    background-color: #212429 !important;
+    color: white !important;
+}
+
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #212429;
+        }
+
+        /* Añadido para el modo oscuro */
+        .dark-mode .header {
+            background-color: #212429;
+            color: white;
+        }
+
+        .dark-mode .header h1 {
+            color: white;
+        }
+
+        .dark-mode .header p {
+            color: white;
+        }
+
+        /* Añadido para el modo oscuro */
+        .dark-mode section {
+            background-color: white;
+            color: black;
+            box-shadow: 0 0 10px rgba(158, 158, 158, 255);
+        }
+        .dark-mode .col {
+    background-color: white !important;
+    color: white !important;
+}
+.dark-mode h1 {
+    color: white !important;
+}
+.dark-mode nav {
+    background-color: #212429 !important;
+}
+.dark-mode header {
+    background-color: gray !important;
+    color: black !important;
+}
+
+.dark-mode h6 a {
+    color: black !important;
+}
+.dark-mode .nav-list a {
+    color: red !important;
+}
+.dark-mode button {
+    background-color: #212429;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+<div class="header" class="col-6">
+	<button id="btn">
+		<hr>
+		<hr>
+		<hr>
+	</button>
+	</div>
+	<nav id="options-menu" class="disabled-menu">
+		<ul>
+			<li  class="nav-list"><a href="#Servicios"><span id="home" class="icon-home color"></span>Servicios</a></li>
+			<li  class="nav-list"><a href="#Productos"><span id="trending" class="icon-flame"></span>Productos</a></li>
+			<li class="nav-list"><a href="#cita"><span id="Agendar" class="icon-subscriptions"></span>Agendar cita</a></li>
+			<li class="nav-list"><a href="#Contactos"><span id="Agendar" class="icon-subscriptions"></span>Contacto</a></li>
+			<li class="nav-list"><a href="#Preguntas o Comentarios"><span id="Agendar" class="icon-subscriptions"></span>Preguntas o Comentarios</a></li>
+			<li class="nav-list"><a href="#redes"><span id="Agendar" class="icon-subscriptions"></span>Redes sociales</a></li>
+		</ul>
+	</nav>
+		<script>var button = document.getElementById("btn");
+
+function showMenu() {
+	var menu = document.getElementById("options-menu");
+	if(menu.classList.contains("disabled-menu")){
+		menu.classList.remove("disabled-menu");
+		menu.classList.add("enabled-menu");
+	} else {
+		menu.classList.remove("enabled-menu");
+		menu.classList.add("disabled-menu");
+	}
+}
+
+button.addEventListener("click", showMenu); 
+
+var navList = document.getElementsByClassName("nav-list");
+for(var i=0; i< navList.length; i++){
+	navList[i].addEventListener("click", showMenu);
+}</script>
+		<script></script>
+
+<header class="black text-white p-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+               <img src="https://i.postimg.cc/yYZLP6Cb/ezgif-6-f42e9b661a.gif" alt="Logo del Centro de Reparación" width="100"id="Inicio">
+            </div>
+            <div class="col-sm-8">
+                <h1 style="color: White;">Megasoft </h1>
+                <p class="lead"><b>Solución confiable para tus problemas informáticos</b></p>
+            </div>
+            
+
+</header>
+<button id="modo-btn" class="dark-mode-toggle" class="col-6">Cambiar Modo</button>
+
+<script>
+    document.getElementById('modo-btn').addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        document.querySelectorAll('.black.text-white').forEach(function(element) {
+            element.classList.toggle('dark-mode');
+        });
+    });
+</script>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-3">
+    <section id="Bienvenida">
+    <h2 style="color: green">Bienvenidos</h2>
+    <p>
+
+¡Bienvenid@! Nos alegra mucho tenerte aquí. Si estás buscando algo en particular o tienes alguna pregunta, no dudes en decirnos. Estamos aquí para ayudarte en todo lo que necesites. ¡Esperamos que tu experiencia con nosotros sea excelente!</p>
+</section>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-3">
+    <section>
+    <h2 style="color: green">¿Quienes somos?</h2>
+    <p>Somos alumnos del COLEGIO DE ESTUDIOS CIENTÍFICOS Y TECNOLÓGICOS, plantel Pénjamo. Hemos desarrollado esta página web para poder promocionar nuestra empresa, nos dedicamos al soporte y mantenimiento de equipos de cómputo</p>
+   </div>
+  </div>
+</div>
+</section>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-lg-3">
+    <section>
+    <h2 style="color: green">Misión</h2>
+    <p>Impulsar en los jóvenes una formación integral de nivel medio superior a través de un proceso educativo de calidad con enfoque científico, tecnológico y humanista para fortalecer su proyecto de vida y el desarrollo sustentable de su entorno.</p>
+   </div>
+  </div>
+</div>
+</section>
+    </div>
+    <div class="col-lg-3">
+      <section>
+    <h2 style="color: green">Visión</h2>
+    <p>Ser una institución líder de educación media superior que forme integralmente a jóvenes con enfoque científico, tecnológico y humanista de excelencia a través de planes, programas y procesos de calidad para contribuir al desarrollo creativo y sustentable de su entorno.</p>
+</section>
+    </div>
+    <div class="col-lg-3">
+      <section>
+    <h2 style="color: green">Valores</h2>
+    <p>Honestidad, Respeto, Responsabilidad, Solidaridad, Compromiso, Trabajo Colaborativo y Lealtad.</p>
+</section>
+    </div>
+</div>
+
+<section id="Servicios">
+    <h2><a href="#Inicio" style="color: green">Servicios</a></h2>
+        <ul class="list-unstyled">
+            <li>*Reparación de hardware y software.</li>
+            <li>*Eliminación de virus y malware.</li>
+            <li>*Actualización de sistemas operativos y controladores.</li>
+            <li>*Recuperación de datos perdidos.</li>
+            <li>*Optimización de rendimiento.</li>
+            <h6 style="color: red">Nota: Puede variar el precio dependiendo del servicio y dispositivo.</h6>
+        </ul>
+</section>
+
+<section id="Productos">
+    <h2><a href="#Inicio" style="color: green">Productos</a></h2>
+    <p>Ofrecemos una amplia gama de productos relacionados con la informática:</p>
+    <div class="col" style="background-color: black">
+    <label for="producto" class="col-xl-6">Selecciona un producto:</label>
+    <select id="producto">
+        <option value="desktop">Computadora de escritorio- $10,000MXN</option>
+        <option value="laptop">Laptop - $9,000MXN</option>
+        <option value="perifericos">Periféricos (teclados, ratones, etc.) - $150MXN</option>
+        <option value="software">Software - $300MXN</option>
+        <option value="accesorios">Accesorios diversos - $80MXN</option>
+    </select>
+    
+    <label for="cantidad" class="col-6">Cantidad:</label>
+    <input type="number" id="cantidad" min="1" value="1">
+    <div style="text-align: center;">
+    <button1 onclick="calcularPrecio()"class="btn btn-primary" style="width:200px" type="submit">Calcular</button>
+    
+    
+    <p id="precioTotal"></p>
+</section>
+
+<script>
+    function calcularPrecio() {
+        var producto = document.getElementById("producto").value;
+        var cantidad = parseInt(document.getElementById("cantidad").value); 
+        var precioUnitario = obtenerPrecioUnitario(producto);
+        
+        console.log("Producto seleccionado:", producto);
+        console.log("Cantidad:", cantidad);
+        console.log("Precio unitario:", precioUnitario);
+        
+        if (precioUnitario !== null) {
+            var precioTotal = cantidad * precioUnitario;
+            document.getElementById("precioTotal").innerHTML = "Precio Total: $" + precioTotal;
+        } else {
+            document.getElementById("precioTotal").innerHTML = "Selecciona un producto válido.";
+        }
+    }
+    
+    function obtenerPrecioUnitario(producto) {
+        switch (producto) {
+            case "desktop":
+                return 10000;
+            case "laptop":
+                return 9000;
+            case "perifericos":
+                return 150;
+            case "software":
+                return 300;
+            case "accesorios":
+                return 80;
+            default:
+                return null;
+        }
+    }
+</script>
+
+<section id="cita">
+    <h2><a href="#Inicio" style="color: green">¡Agenda tu cita!</a></h2>
+    <p>¡Agenda tu cita desde aquí, Escoje el dia en el que asistiras, danos tu nombre, y el asunto por el cuál irás!.</p>
+    <div>
+  <label for="date">Fecha:</label>
+  <input type="date" id="date">
+  <button onclick="agendarCita()"class="btn btn-primary" style="width:200px">Agendar Cita</button>
+</div>
+<div id="mensaje"></div>
+<script>
+function agendarCita() {
+  var fecha = document.getElementById('date').value;
+  document.getElementById('mensaje').innerHTML = "Cita agendada para el " + fecha;
+}
+</script>
+</section>
+
+<section id="Contactos">
+    <h2><a href="#Inicio" style="color: green">Contactos</a></h2>
+    <p>¡Estamos aquí para ayudarte! Puedes contactarnos a través de los siguientes medios:</p>
+    <ul>
+        <li>Teléfono: 123-456-789</li>
+        <li>Visítanos en nuestra tienda:</li>
+    </ul>
+    <p>Dirección: Calle Aldama #123, Pénjamo, Guanajuato, México</p>
+</section>
+
+<section id="Preguntas o Comentarios">
+    <h2><a href="#Inicio" style="color: green">Comentarios</a></h2>
+    <p>¿Tienes preguntas o comentarios sobre nuestro trabajo? ¡Contáctanos!</p>
+    
+    <form action="pen.aescamillar22@alumnos.cecyteg.edu.mx" method="post" enctype="text/plain">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required><br><br>
+        
+        <label for="mensaje">Mensaje:</label><br>
+        <textarea id="mensaje" name="mensaje" rows="3" cols="20" required></textarea><br><br>
+        
+        <button value="Enviar" class="btn btn-primary" style="width:200px">Enviar</button>
+    </form>
+</section>
+
+<section>
+    <h6><a href="#Inicio" style="color: white">IR AL INICIO DE ESTE ARTICULO </a></h6>
+</section>
+
+</section>
+<footer class="black text-white py-3" id="redes">
+    <div class="container text-center">
+  <div class="row">
+  <div class="col-12"  style="background-color: purple;">Nuestras Redes:</div>
+    <div class="col-4" style="background-color: blue;">
+      <a href="https://www.facebook.com/cecyteguanajuatoplantelpenjamo?mibextid=JRoKGi" target="_blank" class="text-white">Facebook</a>
+    </div>
+    <div class="col-4" style="background-color: Black;">
+      <a href="https://x.com/CECyTEG_Penjamo?s=20" target="_blank" class="text-white">X</a>
+    </div>
+    <div class="col-4" style="background-color: red;">
+      <a href="https://www.instagram.com/cecyteguanajuatoplantelpenjamo?igsh=MTFwaGM4ZW9wZWRzZg==" target="_blank" class="text-white">Instagram</a>
+    </div>
+      <p class="m-0" style="color: white">&#169; DERECHOS RESERVADOS POR ANGEL JESÚS</p>
+    </div>
+  </div>
+</div>
+                    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+</body>
+</html>
