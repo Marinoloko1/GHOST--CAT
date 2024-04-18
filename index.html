@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Megasoft</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -323,17 +324,58 @@ a span {
 	border-radius: 50%;
 }
 #titulo1{
-	    color:rgba(2, 253, 249, 255) in !important;
+	    color:rgba(2, 253, 249, 255) !important;
 }
 #titulo2{
 	    color:rgba(2, 253, 249, 255);
         border-radius: 50%;
 }
-#respuestas{
-    box-shadow: 0 0 10px 5px rgba(0, 245, 255, 255);;
+        #Respuestas {
+            margin-bottom: 20px;
+            overflow-y: auto;
+            height: 200px; 
+        }
+        #asistente{
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+        }
+        #asistente-container {
+            display: none;
+            position: fixed;
+            bottom: 70px; 
+            right: 20px; 
+            background-color: black;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 255, 255);
+            z-index: 9998; 
+        }
+        #asistente-container ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #asistente-container ul li {
+            margin-bottom: 10px;
+        }
+
+        @keyframes deslizarRespuestas {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+          .deslizar-animacion {
+            animation: deslizarRespuestas 3s ease-in;
+        }
+        .dark-mode #asistente-container {
+    background-color: white; 
 }
-#pregunta{
-    box-shadow: 0 0 10px 5px rgba(0, 255, 255, 255);;;
+        body.dark-mode {
+    color: black;
+    box-shadow: 0px 0px 10px rgba(158, 158, 158, 255);
 }
 
     </style>
@@ -377,7 +419,7 @@ for(var i=0; i< navList.length; i++){
 }</script>
 		<script></script>
 
-<header class="black text-white p-4">
+<header class="black text-white p-4" id="Inicio">
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
@@ -584,54 +626,69 @@ function agendarCita() {
     </div>
   </div>
 </div>
-                    
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></scrip>
-<div id="respuestas">
+<div id="asistente-container">
+        <div id="Respuestas">
+            <ul id="Respuestas-lista"></ul>
+        </div>
+        <input id="pregunta">
+        <button class="btn btn-primary" onclick="responder()">Enviar</button>
+        <button class="btn-primary"onclick="cerrarAsistente()">Cerrar</button>
+    </div>
 
-	
-</div>
+    <img src="https://cdn-icons-png.freepik.com/512/7747/7747246.png" onclick="mostrarAsistente()"width="80" id="asistente">
+    
+    <script>
+        let Respuestas = {
+            "1": "La Pantalla Azul de la Muerte puede ser causada por diversos problemas, como errores de hardware, problemas de controladores o fallos en el sistema operativo. Te recomendamos buscar el código de error específico que se muestra en la pantalla y buscar soluciones en línea, o contactar a un técnico especializado.",
+            "2": "Una computadora lenta puede deberse a varios factores, como falta de espacio en el disco duro, exceso de programas en ejecución, malware o hardware obsoleto. Puedes intentar liberar espacio en disco, desinstalar programas innecesarios, ejecutar un escaneo antivirus o considerar una actualización de hardware si es necesario.",
+            "3": "Si sospechas que tu computadora está infectada con virus o malware, es importante ejecutar un escaneo completo con un programa antivirus actualizado. Además, asegúrate de mantener tu sistema operativo y software actualizados, y evita hacer clic en enlaces o descargar archivos de fuentes desconocidas.",
+            "4": "Los problemas de conectividad a Internet pueden ser causados por problemas con el enrutador, configuraciones incorrectas, interferencias, o problemas con el proveedor de servicios de Internet. Puedes intentar reiniciar tu enrutador, verificar las conexiones de red, o contactar a tu proveedor de servicios de Internet para obtener ayuda.",
+            "5": "Los problemas de sobrecalentamiento pueden ser causados por obstrucciones en las ventilaciones, acumulación de polvo, o problemas con el sistema de enfriamiento. Puedes intentar limpiar las ventilaciones, usar una base de refrigeración, o verificar el funcionamiento de los ventiladores y disipadores de calor.",
+            "6": "Los fallos del disco duro pueden ser indicativos de problemas con el disco duro, como sectores defectuosos, corrupción de datos, o fallas mecánicas. Es importante respaldar tus datos de inmediato y considerar reemplazar el disco duro lo antes posible. Puedes usar herramientas de diagnóstico de disco duro para verificar la salud del disco.",
+            "7": "Los problemas de hardware pueden incluir fallas en componentes como la memoria RAM, la tarjeta gráfica, o el procesador. Puedes intentar reiniciar tu computadora y verificar las conexiones de hardware. Si los problemas persisten, es posible que necesites reemplazar el hardware defectuoso o contactar a un técnico especializado.",
+            "8": "Los problemas de software pueden ser causados por errores del sistema operativo, controladores desactualizados, o conflictos entre programas. Puedes intentar actualizar tu sistema operativo y controladores, desinstalar programas innecesarios, o ejecutar herramientas de reparación de software.",
+            "9": "Los problemas de pantalla pueden ser causados por fallos en el monitor, problemas de la tarjeta gráfica, o controladores desactualizados. Puedes intentar conectar tu computadora a otro monitor para descartar problemas de hardware, actualizar los controladores de la tarjeta gráfica, o verificar la configuración de pantalla en el sistema operativo.",
+            "10": "Los problemas de alimentación pueden ser causados por problemas con la batería, el adaptador de corriente, o la fuente de alimentación. Puedes intentar conectar tu computadora a otra toma de corriente, verificar si la batería está cargada correctamente, o reemplazar el adaptador de corriente si es necesario."
+        };
 
-<input id="pregunta">
-<button class="btn btn-primary" onclick="responder()">Enviar</button>
-<img src="https://cdn-icons-png.freepik.com/512/7747/7747246.png" onclick="mostrarImagen()" style="display:none;">
-<script>
-    function responder()
-    {
-        let	respuestas={
-            "1":"<br>La Pantalla Azul de la Muerte puede ser causada por diversos problemas, como errores de hardware, problemas de controladores o fallos en el sistema operativo. Te recomendamos buscar el código de error específico que se muestra en la pantalla y buscar soluciones en línea, o contactar a un técnico especializado.",
-            "2":"<br>Una computadora lenta puede deberse a varios factores, como falta de espacio en el disco duro, exceso de programas en ejecución, malware o hardware obsoleto. Puedes intentar liberar espacio en disco, desinstalar programas innecesarios, ejecutar un escaneo antivirus o considerar una actualización de hardware si es necesario.",
-            "3":"<br>Si sospechas que tu computadora está infectada con virus o malware, es importante ejecutar un escaneo completo con un programa antivirus actualizado. Además, asegúrate de mantener tu sistema operativo y software actualizados, y evita hacer clic en enlaces o descargar archivos de fuentes desconocidas.",
-            "4":"<br>Los problemas de conectividad a Internet pueden ser causados por problemas con el enrutador, configuraciones incorrectas, interferencias, o problemas con el proveedor de servicios de Internet. Puedes intentar reiniciar tu enrutador, verificar las conexiones de red, o contactar a tu proveedor de servicios de Internet para obtener ayuda.",
-            "5":"<br>Los problemas de sobrecalentamiento pueden ser causados por obstrucciones en las ventilaciones, acumulación de polvo, o problemas con el sistema de enfriamiento. Puedes intentar limpiar las ventilaciones, usar una base de refrigeración, o verificar el funcionamiento de los ventiladores y disipadores de calor.",
-            "6":"<br>Los fallos del disco duro pueden ser indicativos de problemas con el disco duro, como sectores defectuosos, corrupción de datos, o fallas mecánicas. Es importante respaldar tus datos de inmediato y considerar reemplazar el disco duro lo antes posible. Puedes usar herramientas de diagnóstico de disco duro para verificar la salud del disco.",
-            "7": "<br>Los problemas de hardware pueden incluir fallas en componentes como la memoria RAM, la tarjeta gráfica, o el procesador. Puedes intentar reiniciar tu computadora y verificar las conexiones de hardware. Si los problemas persisten, es posible que necesites reemplazar el hardware defectuoso o contactar a un técnico especializado.",
-            "8":"<br>Los problemas de software pueden ser causados por errores del sistema operativo, controladores desactualizados, o conflictos entre programas. Puedes intentar actualizar tu sistema operativo y controladores, desinstalar programas innecesarios, o ejecutar herramientas de reparación de software.",
-            "9": "<br>Los problemas de pantalla pueden ser causados por fallos en el monitor, problemas de la tarjeta gráfica, o controladores desactualizados. Puedes intentar conectar tu computadora a otro monitor para descartar problemas de hardware, actualizar los controladores de la tarjeta gráfica, o verificar la configuración de pantalla en el sistema operativo.",
-            "10": "<br>Los problemas de alimentación pueden ser causados por problemas con la batería, el adaptador de corriente, o la fuente de alimentación. Puedes intentar conectar tu computadora a otra toma de corriente, verificar si la batería está cargada correctamente, o reemplazar el adaptador de corriente si es necesario."
+        function responder() {
+    let mensaje = document.getElementById("pregunta").value.toLowerCase();
+    document.getElementById("pregunta").value = "";
+    let palabras = mensaje.split(" ");
+    let RespuestaEncontrada = false;
+    let RespuestasHTML = "";
+
+    for (let palabra of palabras) {
+        let Respuesta = Respuestas[palabra];
+        if (Respuesta) {
+            RespuestasHTML += "<li>" + Respuesta + "</li>";
+            RespuestaEncontrada = true;
         }
-        let mensaje= document.getElementById("pregunta").value;
-        document.getElementById("pregunta").value="";
-        let palabras = mensaje.split(" ");
-        for(i in palabras)
-        {
-            let palabra = palabras[i];
-            let respuesta = respuestas[palabra];
-            if(respuesta == undefined)
-            {
-                document.getElementById("respuestas").innerHTML+="¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes: 1. Pantalla Azul de la Muerte 2. Computadora Lenta 3. Virus o Malware 4. Problemas de Conectividad a Internet 5. Problemas de Sobrecalentamiento 6. Fallos del Disco Duro 7. Problemas de Hardware 8. Problemas de Software 9. Problemas de Pantalla 10. Problemas de Alimentación ¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.";
-            }
-            else{
-                document.getElementById("respuestas").innerHTML+=respuesta;
-            }
-        
-        }
-
-
     }
-	function mostrarImagen() {
+
+    if (RespuestaEncontrada) {
+        document.getElementById("Respuestas-lista").innerHTML = RespuestasHTML;
+    } else {
+        document.getElementById("Respuestas-lista").innerHTML = "<li>¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes:</li><li>1. Pantalla Azul de la Muerte</li><li>2. Computadora Lenta</li><li>3. Virus o Malware</li><li>4. Problemas de Conectividad a Internet</li><li>5. Problemas de Sobrecalentamiento</li><li>6. Fallos del Disco Duro</li><li>7. Problemas de Hardware</li><li>8. Problemas de Software</li><li>9. Problemas de Pantalla</li><li>10. Problemas de Alimentación</li><li>¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.</li>";
+    }
+}
+
+
+        function mostrarAsistente() {
+            let asistente = document.getElementById('asistente-container');
             let imagen = document.querySelector('img');
+            imagen.style.display = 'none';
+            asistente.style.display = 'block';
+        }
+        
+        function cerrarAsistente() {
+            let asistente = document.getElementById('asistente-container');
+            let imagen = document.querySelector('img');
+            asistente.style.display = 'none';
             imagen.style.display = 'block';
-	}
-	</script>
+        }
+ </script>
+                    
 </body>
 </html>
+	    
