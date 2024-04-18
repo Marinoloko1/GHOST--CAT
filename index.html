@@ -611,18 +611,22 @@ function agendarCita() {
             let mensaje = document.getElementById("pregunta").value;
             document.getElementById("pregunta").value = "";
             let palabras = mensaje.split(" ");
+            let respuestaEncontrada = false;
 
             for (let i = 0; i < palabras.length; i++) {
                 let palabra = palabras[i];
                 let respuesta = respuestas[palabra];
-                if (respuesta == undefined) {
-                    document.getElementById("respuestas").innerHTML = "¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes: 1. Pantalla Azul de la Muerte 2. Computadora Lenta 3. Virus o Malware 4. Problemas de Conectividad a Internet 5. Problemas de Sobrecalentamiento 6. Fallos del Disco Duro 7. Problemas de Hardware 8. Problemas de Software 9. Problemas de Pantalla 10. Problemas de Alimentación ¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.";
-                } else {
+                if (respuesta !== undefined) {
                     document.getElementById("respuestas").innerHTML += respuesta;
+                    respuestaEncontrada = true;
+                    break;
                 }
+            }
 
+            if (!respuestaEncontrada) {
+                document.getElementById("respuestas").innerHTML = "¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes: 1. Pantalla Azul de la Muerte 2. Computadora Lenta 3. Virus o Malware 4. Problemas de Conectividad a Internet 5. Problemas de Sobrecalentamiento 6. Fallos del Disco Duro 7. Problemas de Hardware 8. Problemas de Software 9. Problemas de Pantalla 10. Problemas de Alimentación ¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.";
             }
         }
-</script>
+    </script>
 </body>
 </html>
