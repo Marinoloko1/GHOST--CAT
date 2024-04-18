@@ -58,7 +58,7 @@
         }
 
         img {
-            max-width: 100%;
+	    max-width: 100%;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -587,46 +587,42 @@ function agendarCita() {
                     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></scrip>
 <div id="respuestas">
-
-	
-</div>
-
-<input id="pregunta">
-<button class="btn btn-primary" onclick="responder()">Enviar</button>
-<script>
-    function responder()
-    {
-        let	respuestas={
-            "1":"<br>La Pantalla Azul de la Muerte puede ser causada por diversos problemas, como errores de hardware, problemas de controladores o fallos en el sistema operativo. Te recomendamos buscar el código de error específico que se muestra en la pantalla y buscar soluciones en línea, o contactar a un técnico especializado.",
-            "2":"<br>Una computadora lenta puede deberse a varios factores, como falta de espacio en el disco duro, exceso de programas en ejecución, malware o hardware obsoleto. Puedes intentar liberar espacio en disco, desinstalar programas innecesarios, ejecutar un escaneo antivirus o considerar una actualización de hardware si es necesario.",
-            "3":"<br>Si sospechas que tu computadora está infectada con virus o malware, es importante ejecutar un escaneo completo con un programa antivirus actualizado. Además, asegúrate de mantener tu sistema operativo y software actualizados, y evita hacer clic en enlaces o descargar archivos de fuentes desconocidas.",
-            "4":"<br>Los problemas de conectividad a Internet pueden ser causados por problemas con el enrutador, configuraciones incorrectas, interferencias, o problemas con el proveedor de servicios de Internet. Puedes intentar reiniciar tu enrutador, verificar las conexiones de red, o contactar a tu proveedor de servicios de Internet para obtener ayuda.",
-            "5":"<br>Los problemas de sobrecalentamiento pueden ser causados por obstrucciones en las ventilaciones, acumulación de polvo, o problemas con el sistema de enfriamiento. Puedes intentar limpiar las ventilaciones, usar una base de refrigeración, o verificar el funcionamiento de los ventiladores y disipadores de calor.",
-            "6":"<br>Los fallos del disco duro pueden ser indicativos de problemas con el disco duro, como sectores defectuosos, corrupción de datos, o fallas mecánicas. Es importante respaldar tus datos de inmediato y considerar reemplazar el disco duro lo antes posible. Puedes usar herramientas de diagnóstico de disco duro para verificar la salud del disco.",
-            "7": "<br>Los problemas de hardware pueden incluir fallas en componentes como la memoria RAM, la tarjeta gráfica, o el procesador. Puedes intentar reiniciar tu computadora y verificar las conexiones de hardware. Si los problemas persisten, es posible que necesites reemplazar el hardware defectuoso o contactar a un técnico especializado.",
-            "8":"<br>Los problemas de software pueden ser causados por errores del sistema operativo, controladores desactualizados, o conflictos entre programas. Puedes intentar actualizar tu sistema operativo y controladores, desinstalar programas innecesarios, o ejecutar herramientas de reparación de software.",
-            "9": "<br>Los problemas de pantalla pueden ser causados por fallos en el monitor, problemas de la tarjeta gráfica, o controladores desactualizados. Puedes intentar conectar tu computadora a otro monitor para descartar problemas de hardware, actualizar los controladores de la tarjeta gráfica, o verificar la configuración de pantalla en el sistema operativo.",
-            "10": "<br>Los problemas de alimentación pueden ser causados por problemas con la batería, el adaptador de corriente, o la fuente de alimentación. Puedes intentar conectar tu computadora a otra toma de corriente, verificar si la batería está cargada correctamente, o reemplazar el adaptador de corriente si es necesario."
-        }
-        let mensaje= document.getElementById("pregunta").value;
-        document.getElementById("pregunta").value="";
-        let palabras = mensaje.split(" ");
-        for(i in palabras)
-        {
-            let palabra = palabras[i];
-            let respuesta = respuestas[palabra];
-            if(respuesta == undefined)
-            {
-                document.getElementById("respuestas").innerHTML+="¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes: 1. Pantalla Azul de la Muerte 2. Computadora Lenta 3. Virus o Malware 4. Problemas de Conectividad a Internet 5. Problemas de Sobrecalentamiento 6. Fallos del Disco Duro 7. Problemas de Hardware 8. Problemas de Software 9. Problemas de Pantalla 10. Problemas de Alimentación ¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.";
-            }
-            else{
-                document.getElementById("respuestas").innerHTML+=respuesta;
-            }
         
+    </div>
+
+    <input id="pregunta">
+    <button class="btn btn-primary" onclick="responder()">Enviar</button>
+
+    <script>
+        function responder() {
+            let respuestas = {
+                "1": "<br>La Pantalla Azul de la Muerte puede ser causada por diversos problemas, como errores de hardware, problemas de controladores o fallos en el sistema operativo. Te recomendamos buscar el código de error específico que se muestra en la pantalla y buscar soluciones en línea, o contactar a un técnico especializado.",
+                "2": "<br>Una computadora lenta puede deberse a varios factores, como falta de espacio en el disco duro, exceso de programas en ejecución, malware o hardware obsoleto. Puedes intentar liberar espacio en disco, desinstalar programas innecesarios, ejecutar un escaneo antivirus o considerar una actualización de hardware si es necesario.",
+                "3": "<br>Si sospechas que tu computadora está infectada con virus o malware, es importante ejecutar un escaneo completo con un programa antivirus actualizado. Además, asegúrate de mantener tu sistema operativo y software actualizados, y evita hacer clic en enlaces o descargar archivos de fuentes desconocidas.",
+                "4": "<br>Los problemas de conectividad a Internet pueden ser causados por problemas con el enrutador, configuraciones incorrectas, interferencias, o problemas con el proveedor de servicios de Internet. Puedes intentar reiniciar tu enrutador, verificar las conexiones de red, o contactar a tu proveedor de servicios de Internet para obtener ayuda.",
+                "5": "<br>Los problemas de sobrecalentamiento pueden ser causados por obstrucciones en las ventilaciones, acumulación de polvo, o problemas con el sistema de enfriamiento. Puedes intentar limpiar las ventilaciones, usar una base de refrigeración, o verificar el funcionamiento de los ventiladores y disipadores de calor.",
+                "6": "<br>Los fallos del disco duro pueden ser indicativos de problemas con el disco duro, como sectores defectuosos, corrupción de datos, o fallas mecánicas. Es importante respaldar tus datos de inmediato y considerar reemplazar el disco duro lo antes posible. Puedes usar herramientas de diagnóstico de disco duro para verificar la salud del disco.",
+                "7": "<br>Los problemas de hardware pueden incluir fallas en componentes como la memoria RAM, la tarjeta gráfica, o el procesador. Puedes intentar reiniciar tu computadora y verificar las conexiones de hardware. Si los problemas persisten, es posible que necesites reemplazar el hardware defectuoso o contactar a un técnico especializado.",
+                "8": "<br>Los problemas de software pueden ser causados por errores del sistema operativo, controladores desactualizados, o conflictos entre programas. Puedes intentar actualizar tu sistema operativo y controladores, desinstalar programas innecesarios, o ejecutar herramientas de reparación de software.",
+                "9": "<br>Los problemas de pantalla pueden ser causados por fallos en el monitor, problemas de la tarjeta gráfica, o controladores desactualizados. Puedes intentar conectar tu computadora a otro monitor para descartar problemas de hardware, actualizar los controladores de la tarjeta gráfica, o verificar la configuración de pantalla en el sistema operativo.",
+                "10": "<br>Los problemas de alimentación pueden ser causados por problemas con la batería, el adaptador de corriente, o la fuente de alimentación. Puedes intentar conectar tu computadora a otra toma de corriente, verificar si la batería está cargada correctamente, o reemplazar el adaptador de corriente si es necesario."
+            };
+
+            let mensaje = document.getElementById("pregunta").value;
+            document.getElementById("pregunta").value = "";
+            let palabras = mensaje.split(" ");
+
+            for (let i = 0; i < palabras.length; i++) {
+                let palabra = palabras[i];
+                let respuesta = respuestas[palabra];
+                if (respuesta == undefined) {
+                    document.getElementById("respuestas").innerHTML = "¡Bienvenido al Asistente! Por favor, elige una opción para obtener ayuda con los problemas más comunes: 1. Pantalla Azul de la Muerte 2. Computadora Lenta 3. Virus o Malware 4. Problemas de Conectividad a Internet 5. Problemas de Sobrecalentamiento 6. Fallos del Disco Duro 7. Problemas de Hardware 8. Problemas de Software 9. Problemas de Pantalla 10. Problemas de Alimentación ¡Gracias por ponerte en contacto! Si necesitas más ayuda, no dudes en volver.";
+                } else {
+                    document.getElementById("respuestas").innerHTML += respuesta;
+                }
+
+            }
         }
-
-
-    }
 </script>
 </body>
 </html>
