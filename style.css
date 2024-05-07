@@ -237,7 +237,12 @@ a span {
 }
 
 .normal-mode {
-          color: black
+    background-color: gray;
+    color: white;
+}
+.dark-mode-toggle.dark-mode {
+    background-color: gray;
+    color: black
 }
 
 .dark-mode .black {
@@ -331,8 +336,8 @@ a span {
         #asistente-container {
             display: none;
             position: fixed;
-            bottom: 60px; 
-            right: 10px; 
+            bottom: 70px; 
+            right: 20px; 
             background-color: black;
             border: 1px solid #ccc;
             padding: 10px;
@@ -363,3 +368,10 @@ a span {
         body.dark-mode {
     color: black;
 }
+.audio{
+	box-shadow: 0 0 10px 5px rgba(255, 255, 255, 255);
+	border-radius: 50%;
+}
+	    .mensaje{
+		    color: yellow;
+	    }
